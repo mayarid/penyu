@@ -1,0 +1,6 @@
+isotmp.*
+*.iso
+*.sha1
+*.pkgdiff
+*.xdelta
+.DS_Store
