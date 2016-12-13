@@ -1,0 +1,7 @@
+---
+services:
+  build:
+    image: aksaramaya/base-builder
+    volumes:
+    - .:/opt
+version: "2"
