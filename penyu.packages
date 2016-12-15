@@ -7,3 +7,4 @@ openssh
 chrony
 tzdata
 docker
+python
