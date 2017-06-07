@@ -3,5 +3,5 @@ services:
   build:
     image: orcinus/penyu-builder:latest
     volumes:
-    - .:/home/am
+    - .:/tmp
 version: "2"
