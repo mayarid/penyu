@@ -1,8 +1,12 @@
-FROM orcinus/penyu-builder
+FROM orcinus/penyu-builder:latest
 MAINTAINER ibnu yahya <anak10thn@gmail.com>
 
 ENV LANG=C.UTF-8 LC_ALL=C
 
-RUN apk --update add bash sudo build-base apk-tools alpine-conf busybox fakeroot syslinux xorriso
+RUN apk --update add bash sudo build-base apk-tools alpine-conf busybox fakeroot syslinux xorriso shadow abuild git
 
 RUN apk add mtools dosfstools grub-efi
+
+RUN adduser -s /bin/sh -S build -G abuild
+
+USER build

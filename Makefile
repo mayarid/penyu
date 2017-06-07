@@ -13,12 +13,9 @@ BUILD_DIR	?= $(shell pwd)
 all: bootstrap build
 
 bootstrap:
-	@echo "==> start : boostrap build"
-	useradd build -G abuild
-
 	@echo "==> create signing keys"
 	abuild-keygen -i -n -a
-	cat /root/.abuild/abuild.conf >>/etc/abuild.conf
+	#cat /root/.abuild/abuild.conf >>/etc/abuild.conf
 	ls /etc/apk/keys/
 
 	@echo "==> clone aports"
