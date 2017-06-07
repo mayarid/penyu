@@ -1,3 +1,0 @@
-PENYU_NAME     := penyu
-MODLOOP_EXTRA   :=
-KERNEL_FLAVOR   := 

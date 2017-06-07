@@ -5,3 +5,5 @@ isotmp.*
 *.xdelta
 .DS_Store
 aports
+mkimage.*
+iso/
