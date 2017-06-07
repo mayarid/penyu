@@ -19,10 +19,10 @@ bootstrap:
 	ls /etc/apk/keys/
 
 	@echo "==> clone aports"
-	@git clone git://git.alpinelinux.org/aports
+	@if [ ! -d "aports" ]; then git clone git://git.alpinelinux.org/aports;fi
 
 	@echo "==> update packages"
-	apk update
+	sudo apk update
 
 build:
 	@echo "==> start : generate profile file"
