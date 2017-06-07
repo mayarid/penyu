@@ -33,4 +33,5 @@ sh mkimage.sh --tag edge \
 	--outdir $BUILD_DIR/iso \
 	--arch $ARCH \
 	--repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
+	--extra-repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
 	--profile $PROFILENAME
