@@ -29,9 +29,9 @@ EOF
 
 chmod +x mkimg.$PROFILENAME.sh
 
-sh mkimage.sh --tag edge \
+sh mkimage.sh --tag latest-stable \
 	--outdir $BUILD_DIR/iso \
 	--arch $ARCH \
-	--repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
-	--extra-repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+	--repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main \
+	--extra-repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/community \
 	--profile $PROFILENAME

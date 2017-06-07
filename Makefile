@@ -19,7 +19,7 @@ bootstrap:
 	ls /etc/apk/keys/
 
 	@echo "==> clone aports"
-	@if [ ! -d "aports" ]; then git clone git://git.alpinelinux.org/aports;fi
+	@if [ ! -d "aports" ]; then git clone git://git.alpinelinux.org/aports --branch=3.6-stable aports;fi
 
 	@echo "==> update packages"
 	sudo apk update
