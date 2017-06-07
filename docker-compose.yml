@@ -1,7 +1,7 @@
 ---
 services:
   build:
-    image: aksaramaya/base-builder
+    image: orcinus/penyu-builder:latest
     volumes:
     - .:/opt
 version: "2"
