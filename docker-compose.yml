@@ -1,0 +1,7 @@
+---
+services:
+  build:
+    image: orcinus/penyu-builder:latest
+    volumes:
+    - .:/opt
+version: "2"
