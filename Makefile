@@ -14,6 +14,8 @@ all: bootstrap build
 
 bootstrap:
 	@echo "==> create signing keys"
+	@sudo chown am /tmp
+	@sudo chown am * -R
 	abuild-keygen -i -n -a
 	#cat /root/.abuild/abuild.conf >>/etc/abuild.conf
 	ls /etc/apk/keys/
@@ -28,3 +30,7 @@ build:
 	@echo "==> start : generate profile file"
 	mkdir iso
 	sh ./build.sh "$(PROFILE)" "$(KERNEL_FLAVOR)" "$(MODLOOP_EXTRA)" "$(APKS)" "$(BUILD_DIR)" "$(PENYU_ARCH)"
+
+clean:
+	@echo "==> start : clean data"
+	@sudo rm -rf iso mkimage.*
