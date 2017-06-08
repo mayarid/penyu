@@ -1,3 +1,3 @@
 PENYU_NAME     := penyu
-MODLOOP_EXTRA   :=
-KERNEL_FLAVOR   := 
+MODLOOP_EXTRA   := zfs spl
+KERNEL_FLAVOR   := hardened

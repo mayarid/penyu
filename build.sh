@@ -24,6 +24,8 @@ profile_$PROFILENAME() {
 		done
 	done
 	apks="\$apks linux-firmware"
+
+	hostname="penyu"
 }
 EOF
 
