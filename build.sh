@@ -29,7 +29,7 @@ EOF
 
 chmod +x mkimg.$PROFILENAME.sh
 
-sh mkimage.sh --tag latest-stable \
+sh mkimage.sh --tag latest \
 	--outdir $BUILD_DIR/iso \
 	--arch $ARCH \
 	--repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main \
