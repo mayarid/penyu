@@ -6,7 +6,7 @@ before_install:
 - docker pull orcinus/penyu-builder:latest
 
 script:
-- docker run -v .:/tmp -it orcinus/penyu-builder make
+- docker run -v $PWD:/tmp -it orcinus/penyu-builder make
 
 deploy:
   provider: releases
