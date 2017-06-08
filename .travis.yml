@@ -1,0 +1,19 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+- docker pull orcinus/penyu-builder:latest
+
+script:
+- docker run -v .:/tmp -it orcinus/penyu-builder make
+
+deploy:
+  provider: releases
+  api_key:
+    secure: WBWeyIRpsVm4YL1H139c1iSDHVQd2h0WY397RPP+uhxBErO42B8lK0NhuRUQ779Eo7zJLmKNCwU161Jrkk4j/IXJcfxmLKKYoXNojVPNsVtrBHG+PYAlaBVS2fiw05K8q/hzeFbz6xDfKb1yPWgtiiSj1cSSUrRsm6q00sVWVyj0MoCfxfGnkktKY4ZEh7YEoaMcjvTfwLi3JF1NMK1bk/We+AL0C0M7okWQzf3mdYCl5hJNsHeklOJhoVnTgUcP8S0VH5E1Voj/8ggq1pOrEh/0M6ibRZa5C3pEJs55eVs/9UETUHfHx7ODhmoLeLG1Y0scAt6voGAH6z9/WUBL1nFOX6lGZx+CIdY5HYUGVNEL4p30T9JwV6RMshceNSuxQFd2Om2CgDCUwdHj4yiRLNEx198g69lGlrF1Xx0A8hp7fmKlgCgXJTdJM+JJszk9XpZbhoZnK9HPZdic4MqAWKzDxmPIyssSyvwVpUDNcwPnHULeNjBbDKGGhw4QLCI0MfP6T+EfQqz0VYB+yuxGXE1X0Jy9kSBBawk6REkRdLZRP+EAU9NxcnwmdVQPozvenJp/vsnnr7Z/CdViuYzAjtwq0eAPrDyMhTVZKyVhnctHbOSeoVl/9rfQ6uSZqAengNWZBczbPt5QxkpAPQ82+bXaCZuhLwBhT29LbFA95nM=
+  file_glob: true
+  file: iso/*
+  on:
+    repo: orcinustools/penyu
+    tags: true
