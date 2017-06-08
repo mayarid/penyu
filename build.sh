@@ -29,6 +29,8 @@ profile_$PROFILENAME() {
 }
 EOF
 
+sed -i -e 's|image_name="alpine-${PROFILE}"|image_name="${PROFILE}"|g' mkimage.sh
+
 chmod +x mkimg.$PROFILENAME.sh
 
 sh mkimage.sh --tag latest \
