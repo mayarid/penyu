@@ -26,7 +26,7 @@ bootstrap:
 	@echo "==> update packages"
 	sudo apk update
 
-build:
+build: clean
 	@echo "==> start : generate profile file"
 	mkdir iso
 	sh ./build.sh "$(PROFILE)" "$(KERNEL_FLAVOR)" "$(MODLOOP_EXTRA)" "$(APKS)" "$(BUILD_DIR)" "$(PENYU_ARCH)"
