@@ -1,5 +1,7 @@
 kbd-bkeymaps
 e2fsprogs
+sfdisk
+syslinux
 alpine-base
 alpine-mirrors
 network-extras
