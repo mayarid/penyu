@@ -9,3 +9,6 @@ chrony
 tzdata
 docker
 python
+networkmanager
+hostapd
+dnsmasq
