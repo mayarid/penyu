@@ -7,4 +7,5 @@ RUN apk --update add bash sudo build-base apk-tools alpine-conf busybox fakeroot
 
 RUN adduser -s /bin/sh -S am -G abuild; echo "am	ALL=(ALL)	NOPASSWD:ALL" >> /etc/sudoers;
 
+WORKDIR /tmp
 USER am
