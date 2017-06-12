@@ -15,7 +15,7 @@ iwconfig wlan0 essid $ESSID
 echo "===> wifi password : "
 wpa_passphrase $ESSID > /etc/wpa_supplicant/wpa_supplicant.conf
 
-wpa_supplicant -Dwext -iwlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+wpa_supplicant -B -Dwext -iwlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 
 cat << EOF > /etc/network/interfaces
 auto lo
