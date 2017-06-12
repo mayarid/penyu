@@ -1,4 +1,5 @@
 #!/bin/sh
+apk add network-extras
 rc-update add udhcpd boot
 rc-update add wpa_supplicant boot
 
