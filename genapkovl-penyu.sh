@@ -51,6 +51,7 @@ docker
 dnsmasq
 hostapd
 network-extras
+git
 EOF
 
 makefile root:root 0644 "$tmp"/etc/issue <<EOF
@@ -77,6 +78,18 @@ makefile root:root 0755 "$tmp"/etc/installer-script/penyu-wifi <<'WIFI'
 #!/bin/sh
 
 ifconfig wlan0 up
+
+cat > /etc/network/interfaces <<EOF
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto wlan0
+iface wlan0 inet dhcp
+EOF
+
 echo "===> scanning wifi......."
 
 iwlist wlan0 scan | grep 'ESSID\|Encryption'
@@ -122,6 +135,9 @@ HOSTNAMEOPTS="-n penyu"
 INTERFACESOPTS="auto lo
 iface lo inet loopback
 
+auto wlan0
+iface wlan0 inet dhcp
+
 auto eth0
 iface eth0 inet dhcp
     hostname penyu
@@ -136,7 +152,6 @@ TIMEZONEOPTS="-z UTC"
 # set http/ftp proxy
 PROXYOPTS="none"
 
-# Add a random mirror
 APKREPOSOPTS="-r"
 
 # Install Openssh
@@ -151,12 +166,6 @@ DISKOPTS="-m sys /dev/sda"
 _EOF_
 
 cat /tmp/welcome.txt
-
-if [ -f "/sys/class/net/wlan0/operstate" ]
-	then
-	ifconfig wlan0 up
-	sh /etc/installer-script/penyu-wifi
-fi
 
 /sbin/setup-alpine -f /tmp/installer.conf
 
@@ -176,7 +185,6 @@ rc_add bootmisc boot
 rc_add syslog boot
 rc_add docker boot
 rc_add udhcpd boot
-rc_add wpa_supplicant boot
 
 rc_add mount-ro shutdown
 rc_add killprocs shutdown
