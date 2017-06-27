@@ -6,7 +6,10 @@ MODLOOP_EXTRA=$3
 APKS=$4
 BUILD_DIR=$5
 ARCH=$6
+PENYU_OVL=$7
 
+cp $PWD/$PENYU_OVL $APORTDIR
+chmod +x $APORTDIR/$PENYU_OVL
 cd $APORTDIR
 cat << EOF > mkimg.$PROFILENAME.sh
 profile_$PROFILENAME() {
@@ -24,6 +27,10 @@ profile_$PROFILENAME() {
 		done
 	done
 	apks="\$apks linux-firmware"
+	if [ -f "$PENYU_OVL" ]
+		then
+		apkovl="$PENYU_OVL"
+	fi
 
 	hostname="penyu"
 }

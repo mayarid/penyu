@@ -7,6 +7,7 @@ BUILD_DATE	:= $(shell date +%y%m%d)
 PENYU_RELEASE	?= $(BUILD_DATE)
 PENYU_NAME	?= penyu
 PENYU_ARCH	?= $(shell abuild -A)
+PENYU_OVL		?= "genapkovl-penyu.sh"
 APKS		?= $(shell sed 's/\#.*//; s/\*/\\*/g' $(PROFILE).packages | paste -sd " " - )
 BUILD_DIR	?= $(shell pwd)
 
@@ -29,7 +30,7 @@ bootstrap:
 build: clean
 	@echo "==> start : generate profile file"
 	mkdir iso
-	sh ./build.sh "$(PROFILE)" "$(KERNEL_FLAVOR)" "$(MODLOOP_EXTRA)" "$(APKS)" "$(BUILD_DIR)" "$(PENYU_ARCH)"
+	sh ./build.sh "$(PROFILE)" "$(KERNEL_FLAVOR)" "$(MODLOOP_EXTRA)" "$(APKS)" "$(BUILD_DIR)" "$(PENYU_ARCH)" "$(PENYU_OVL)"
 
 clean:
 	@echo "==> start : clean data"
