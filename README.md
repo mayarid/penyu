@@ -1,6 +1,6 @@
 # Penyu OS
 PenyuOS integrates the tools and patterns of container-based application and Orcinus orchestration tools with reliable, and modern architecture operating system platforms.
-![penyu](assets/penyu.svg)
+![penyu](assets/penyu.png)
 
 ## How to Build
 ~~~bash
