@@ -7,7 +7,7 @@ BUILD_DATE	:= $(shell date +%y%m%d)
 PENYU_RELEASE	?= $(BUILD_DATE)
 PENYU_NAME	?= penyu
 PENYU_ARCH	?= $(shell abuild -A)
-PENYU_OVL		?= "genapkovl-penyu.sh"
+PENYU_OVL		?= "genapkovl-$(PROFILE).sh"
 APKS		?= $(shell sed 's/\#.*//; s/\*/\\*/g' $(PROFILE).packages | paste -sd " " - )
 BUILD_DIR	?= $(shell pwd)
 
