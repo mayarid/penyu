@@ -8,6 +8,7 @@ before_install:
 
 script:
 - docker run -v $PWD:/tmp -it orcinus/penyu-builder make
+- docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=penyu-xen
 
 deploy:
   provider: releases

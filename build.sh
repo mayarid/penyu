@@ -1,5 +1,5 @@
 #!/bin/sh
-APORTDIR="./aports/scripts/"
+APORTDIR="./aports/scripts"
 PROFILENAME=$1
 KERNEL_FLAVOR=$2
 MODLOOP_EXTRA=$3
@@ -7,11 +7,17 @@ APKS=$4
 BUILD_DIR=$5
 ARCH=$6
 PENYU_OVL=$7
+PENYU_TYPE=$8
+
+if [ -f "./script.$PROFILENAME.sh" ]
+	then
+	cat ./script.$PROFILENAME.sh >> $APORTDIR/mkimg.$PROFILENAME.sh
+fi
 
 cp $PWD/$PENYU_OVL $APORTDIR
 chmod +x $APORTDIR/$PENYU_OVL
 cd $APORTDIR
-cat << EOF > mkimg.$PROFILENAME.sh
+cat << EOF >> mkimg.$PROFILENAME.sh
 profile_$PROFILENAME() {
 	profile_standard
 	kernel_flavors="$KERNEL_FLAVOR"
@@ -36,11 +42,11 @@ profile_$PROFILENAME() {
 }
 EOF
 
-sed -i -e 's|image_name="alpine-${PROFILE}"|image_name="${PROFILE}"|g' mkimage.sh
+sed -i -e 's|image_name="alpine-${PROFILE}"|image_name="penyu"|g' mkimage.sh
 
 chmod +x mkimg.$PROFILENAME.sh
 
-sh mkimage.sh --tag latest \
+sh mkimage.sh --tag $PENYU_TYPE \
 	--outdir $BUILD_DIR/iso \
 	--arch $ARCH \
 	--repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main \
