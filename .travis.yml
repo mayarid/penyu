@@ -7,9 +7,10 @@ before_install:
 - docker pull orcinus/penyu-builder:latest
 
 script:
-- docker run -v $PWD:/tmp -it orcinus/penyu-builder make
-- docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=penyu-xen
 - mkdir out
+- docker run -v $PWD:/tmp -it orcinus/penyu-builder make
+- cp iso/* out/
+- docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=penyuxen
 - cp iso/* out/
 - ls -lsah out/
 
