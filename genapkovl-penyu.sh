@@ -76,6 +76,7 @@ EOF
 mkdir -p "$tmp"/etc/installer-script
 makefile root:root 0755 "$tmp"/etc/installer-script/penyu-wifi <<'WIFI'
 #!/bin/sh
+rm /etc/wpa_supplicant/wpa_supplicant.conf
 
 ifconfig wlan0 up
 
