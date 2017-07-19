@@ -12,6 +12,8 @@ script:
 - cp iso/* out/
 - docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=penyuxen
 - cp iso/* out/
+- docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=olcm
+- cp iso/* out/
 - ls -lsah out/
 
 deploy:
