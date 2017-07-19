@@ -7,13 +7,13 @@ before_install:
 - docker pull orcinus/penyu-builder:latest
 
 script:
-- mkdir out
+- mkdir -p out
 - docker run -v $PWD:/tmp -it orcinus/penyu-builder make
-- cp iso/* out/
+- cp iso/*.iso out/
 - docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=penyuxen
-- cp iso/* out/
+- cp iso/*.iso out/
 - docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=olcm
-- cp iso/* out/
+- cp iso/*.iso out/
 - ls -lsah out/
 
 deploy:
