@@ -41,7 +41,10 @@ auto eth0
 iface eth0 inet dhcp
 
 auto wlan0
-iface wlan0 inet dhcp
+iface wlan0 inet static
+        address 192.168.7.48
+        netmask 255.255.255.0
+        gateway 192.168.7.48
 EOF
 
 mkdir -p "$tmp"/etc/apk
@@ -52,6 +55,9 @@ dnsmasq
 hostapd
 network-extras
 git
+hostapd
+udhcpd
+iptables
 EOF
 
 makefile root:root 0644 "$tmp"/etc/issue <<EOF
@@ -110,6 +116,42 @@ service networking restart
 ifconfig wlan0
 WIFI
 
+makefile root:root 0755 "$tmp"/etc/udhcpd.conf <<'UDHCP'
+start				192.168.7.49
+end					192.168.7.254
+max_leases	64
+interface	wlan0
+opt	dns	192.168.7.48 8.8.8.8
+opt	subnet	255.255.255.0
+opt	router	192.168.7.48
+opt	lease	864000
+UDHCP
+
+mkdir -p "$tmp"/etc/hostapd
+makefile root:root 0755 "$tmp"/etc/hostapd/hostapd.conf <<'HOSTAPD'
+ctrl_interface=/var/run/hostapd
+ctrl_interface_group=0
+interface=wlan0
+#driver=nl80211
+logger_syslog=-1
+logger_syslog_level=2
+logger_stdout=-1
+logger_stdout_level=2
+ssid=ijakarta.id
+hw_mode=g
+channel=6
+max_num_sta=32
+rts_threshold=2347
+fragm_threshold=2346
+macaddr_acl=0
+auth_algs=3
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=1234567890
+wpa_key_mgmt=WPA-PSK WPA-PSK-SHA256
+wpa_pairwise=TKIP CCMP
+HOSTAPD
+
 makefile root:root 0755 "$tmp"/etc/installer-script/penyu-default-install <<'EOF'
 #!/bin/sh
 cat > /tmp/welcome.txt <<'_EOF_'
@@ -138,7 +180,10 @@ INTERFACESOPTS="auto lo
 iface lo inet loopback
 
 auto wlan0
-iface wlan0 inet dhcp
+iface wlan0 inet static
+    address 192.168.7.48
+    netmask 255.255.255.0
+    gateway 192.168.7.48
 
 auto eth0
 iface eth0 inet dhcp
@@ -187,6 +232,7 @@ rc_add bootmisc boot
 rc_add syslog boot
 rc_add docker boot
 rc_add udhcpd boot
+rc_add hostapd boot
 
 rc_add mount-ro shutdown
 rc_add killprocs shutdown
