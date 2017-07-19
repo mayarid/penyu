@@ -35,4 +35,4 @@ build: clean
 
 clean:
 	@echo "==> start : clean data"
-	@sudo rm -rf iso out mkimage.*
+	@sudo rm -rf iso mkimage.*
