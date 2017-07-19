@@ -173,7 +173,7 @@ cat > /tmp/installer.conf <<'_EOF_'
 KEYMAPOPTS="us us"
 
 # Set hostname to penyu-test
-HOSTNAMEOPTS="-n penyu"
+HOSTNAMEOPTS="-n ijakarta"
 
 # Contents of /etc/network/interfaces
 INTERFACESOPTS="auto lo
