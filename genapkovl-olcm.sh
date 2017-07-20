@@ -56,7 +56,6 @@ hostapd
 network-extras
 git
 hostapd
-udhcpd
 iptables
 EOF
 
