@@ -20,6 +20,11 @@ To clean up the directory, run
 make clean
 ```
 
+## Build penyu for chip board
+```bash
+make chip
+```
+
 ## Package Management
 ### Update meta repo
 
