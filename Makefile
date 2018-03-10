@@ -33,6 +33,10 @@ build: clean
 	mkdir iso
 	sh ./build.sh "$(PROFILE)" "$(KERNEL_FLAVOR)" "$(MODLOOP_EXTRA)" "$(APKS)" "$(BUILD_DIR)" "$(PENYU_ARCH)" "$(PENYU_OVL)" "$(PENYU_TYPE)"
 
+chip:
+	@echo "==> start: chip environment"
+	docker run --privileged -v $(BUILD_DIR):/root -it ubuntu:zesty bash -c "cd /root;chmod +x build-chip.sh;./build-chip.sh"
+
 clean:
 	@echo "==> start : clean data"
 	@sudo rm -rf iso mkimage.*

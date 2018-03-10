@@ -7,3 +7,6 @@ isotmp.*
 aports
 mkimage.*
 iso/
+penyu-*.tar.gz
+.bash_history
+.wget-hsts
