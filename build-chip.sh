@@ -287,8 +287,8 @@ main () {
   #   "${penyu_pretty_name} with Buildroot ${buildroot_version_id} built on $(date +%Y-%m-%d)" \
   #   "Daily build." \
   #   "${temp_tar}"
-
-  cp "${temp_tar}" /root/penyu-${penyu_version_id}-chip-armv7.tar.gz
+  mkdir -p /root/iso
+  cp "${temp_tar}" /root/iso/penyu-${penyu_version_id}-chip-armv7.tar.gz
 
   einfo "Done!"
 }
