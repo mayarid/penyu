@@ -20,10 +20,20 @@ To clean up the directory, run
 make clean
 ```
 
-## Build penyu for chip board
+## C.H.I.P board
+### BUILD
 ```bash
 make chip
 ```
+### FLASH your images
+
+```bash
+# if you use OSX
+brew install coreutils
+# flash images
+make flash-chip
+```
+
 
 ## Package Management
 ### Update meta repo

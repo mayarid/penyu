@@ -37,6 +37,13 @@ chip:
 	@echo "==> start: chip environment"
 	docker run --privileged -v $(BUILD_DIR):/root -it ubuntu:zesty bash -c "cd /root;chmod +x build-chip.sh;./build-chip.sh"
 
+flash-chip:
+	tar vxf iso/penyu-*chip*.tar.gz -C iso/
+	cd iso/
+	wget https://raw.githubusercontent.com/NextThingCo/CHIP-tools/chip/stable/chip-fel-flash.sh
+	chmod +x chip-fel-flash.sh
+	sudo BUILDROOT_OUTPUT_DIR=penyu/ ./chip-fel-flash.sh
+
 clean:
 	@echo "==> start : clean data"
 	@sudo rm -rf iso mkimage.*
