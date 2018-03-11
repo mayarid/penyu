@@ -5,15 +5,18 @@ services:
 
 before_install:
 - docker pull orcinus/penyu-builder:latest
+- docker pull ubuntu:zesty
 
 script:
 - docker run -v $PWD:/tmp -it orcinus/penyu-builder make
 - mkdir -p out/
 - cp iso/*.iso out/
-- docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=penyuxen
-- cp iso/*.iso out/
-- docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=olcm
-- cp iso/*.iso out/
+#- docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=penyuxen
+#- cp iso/*.iso out/
+#- docker run -v $PWD:/tmp -it orcinus/penyu-builder make PROFILE=olcm
+#- cp iso/*.iso out/
+- make chip
+- cp iso/*.tar.gz out/
 - ls -lsah out/
 
 deploy:
